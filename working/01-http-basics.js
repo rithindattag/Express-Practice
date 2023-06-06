@@ -35,6 +35,7 @@ const server = http.createServer((req, res) => {
   else if (url === "/browser-app.js") {
     res.writeHead(200, { "content-type": "text/javascript" });
     res.write(homeBrowser);
+    res.end();
   }
 
   // About Page
