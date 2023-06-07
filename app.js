@@ -7,8 +7,12 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/products", (req, res) => {
-    res.json(products);
-})
+    const newProducts = products.map((products) => {
+        const { id, name, image } = products;
+        return { id, name, image };
+    })
+  res.json(newProducts);
+});
 
 app.listen(5000, () => {
   console.log("Server listening at port 5000...");
