@@ -29,25 +29,25 @@ app.get("/api/products/:productID/review/:reviewID", (req, res) => {
   res.send("The product is good!");
 });
 
-app.get('/api/v1/query', (req, res) => {
-  const { search, limit } = req.query
-  let sortedProducts = [...products]
+app.get("/api/v1/query", (req, res) => {
+  const { search, limit } = req.query;
+  let sortedProducts = [...products];
 
-  if(search) {
+  if (search) {
     sortedProducts = sortedProducts.filter((product) => {
-      return product.name.startsWith(search)
-    })
+      return product.name.startsWith(search);
+    });
   }
 
-  if(limit) {
-    sortedProducts = sortedProducts.slice(0, Number(limit))
+  if (limit) {
+    sortedProducts = sortedProducts.slice(0, Number(limit));
   }
 
-  if(sortedProducts < 1) {
+  if (sortedProducts < 1) {
     return res.status(200).send("No products matched your search");
   }
-  return res.status(200).json(sortedProducts)
-})
+  return res.status(200).json(sortedProducts);
+});
 
 app.listen(5000, () => {
   console.log("Server listening at port 5000...");
